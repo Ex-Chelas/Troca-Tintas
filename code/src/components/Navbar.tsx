@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
-import HamburgerMenu from "./HamburgerMenu";
 
 interface NavLink {
     label: string;
@@ -10,10 +9,11 @@ interface NavLink {
 
 interface NavbarProps {
     title: string;
-    links: NavLink[];
+    links: NavLink[]; // Links specific to Navbar
+    menu?: React.ReactNode; // Optional menu component (HamburgerMenu)
 }
 
-export default function Navbar({ title, links }: NavbarProps) {
+export default function Navbar({ title, links, menu }: NavbarProps) {
     return (
         <AppBar position="static">
             <Toolbar
@@ -21,10 +21,11 @@ export default function Navbar({ title, links }: NavbarProps) {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    backgroundColor: "#FF5500",
                 }}
             >
-                {/* Hamburger Menu on the left */}
-                <HamburgerMenu links={links} />
+                {/* Render the injected Hamburger Menu */}
+                {menu && <Box sx={{ mr: 2 }}>{menu}</Box>}
 
                 {/* Centered Title */}
                 <Typography variant="h6" component="div" sx={{ textAlign: "center", flexGrow: 1 }}>
@@ -35,11 +36,8 @@ export default function Navbar({ title, links }: NavbarProps) {
                 <Box
                     component="nav"
                     sx={{
-                        display: "none",
+                        display: "flex",
                         gap: "10px",
-                        "@media (min-width: 600px)": {
-                            display: "flex",
-                        },
                     }}
                 >
                     {links.map((link, index) => (
