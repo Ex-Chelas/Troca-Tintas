@@ -8,6 +8,8 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import Navbar from "../components/Navbar";
 import HamburgerMenu from "../components/HamburgerMenu";
 import { Box } from "@mui/material";
+import DropSchema from "../pages/DropSchema/DropSchema";
+
 
 export default function AppRouter() {
     return (
@@ -40,14 +42,14 @@ export default function AppRouter() {
                     }
                 />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/login" element={<LogIn />} />
-                    <Route path="/shopping-cart" element={<ShoppingCart />} />
-                </Routes>
-            </Router>
-        </Box>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/signin" element={<SignIn/>}/>
+                <Route path="/login" element={<LogIn/>}/>
+                <Route path="/dropSchema" element={<DropSchema/>}/>
+                <Route path="/shopping-cart" element={<ShoppingCart/>}/>
+            </Routes>
+        </Router>
     );
 }
