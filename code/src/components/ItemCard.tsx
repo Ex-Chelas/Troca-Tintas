@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Button, Rating, Card, CardContent, CardMedia } from "@mui/material";
+import {Box, Button, Card, CardContent, CardMedia, Rating, Typography} from "@mui/material";
 import {CARD_WIDTH} from "../service/constants";
 
 interface ItemCardProps {
@@ -10,7 +10,7 @@ interface ItemCardProps {
     onAddToCart: () => void;
 }
 
-export default function ItemCard({ title, price, image, rating, onAddToCart }: ItemCardProps) {
+export default function ItemCard({title, price, image, rating, onAddToCart}: ItemCardProps) {
     return (
         <Card
             sx={{
@@ -33,7 +33,8 @@ export default function ItemCard({ title, price, image, rating, onAddToCart }: I
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    // backgroundColor: "#f5f5f5",
+                    backgroundColor: "#f5f5f5",
+                    paddingTop: 2, // Add padding between the top of the card and the image
                 }}
             >
                 <CardMedia
@@ -50,19 +51,19 @@ export default function ItemCard({ title, price, image, rating, onAddToCart }: I
 
             <CardContent>
                 {/* Product Title */}
-                <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+                <Typography variant="h6" sx={{fontWeight: "bold", marginBottom: 1}}>
                     {title}
                 </Typography>
 
                 {/* Product Price */}
-                <Typography variant="h5" sx={{ color: "green", fontWeight: "bold", marginBottom: 1 }}>
+                <Typography variant="h5" sx={{color: "green", fontWeight: "bold", marginBottom: 1}}>
                     {price.toFixed(2)}€
                 </Typography>
 
                 {/* Product Rating */}
-                <Box sx={{ display: "flex", alignItems: "center", marginBottom: 2 }}>
-                    <Rating value={rating} precision={0.5} readOnly />
-                    <Typography variant="body2" sx={{ marginLeft: 1 }}>
+                <Box sx={{display: "flex", alignItems: "center", marginBottom: 2}}>
+                    <Rating value={rating} precision={0.5} readOnly/>
+                    <Typography variant="body2" sx={{marginLeft: 1}}>
                         {rating.toFixed(1)}
                     </Typography>
                 </Box>
@@ -73,7 +74,7 @@ export default function ItemCard({ title, price, image, rating, onAddToCart }: I
                     color="primary"
                     onClick={onAddToCart}
                     fullWidth
-                    sx={{ backgroundColor: "orange", ":hover": { backgroundColor: "#cc7000" } }}
+                    sx={{backgroundColor: "orange", ":hover": {backgroundColor: "#cc7000"}}}
                 >
                     Add to Cart
                 </Button>

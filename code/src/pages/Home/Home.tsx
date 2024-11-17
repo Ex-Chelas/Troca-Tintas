@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ItemCard from "../../components/ItemCard";
-import { Box } from "@mui/material";
-import { products } from "../../service/dbDump";
-import { CARD_WIDTH, CARD_GAP } from "../../service/constants";
+import {Box} from "@mui/material";
+import {products} from "../../service/dbDump";
+import {CARD_GAP, CARD_WIDTH} from "../../service/constants";
 
 export default function Home() {
     const [padding, setPadding] = useState(0);
@@ -31,32 +31,39 @@ export default function Home() {
 
     return (
         <Box
-            ref={containerRef}
             sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: `${CARD_GAP}px`,
-                justifyContent: "center",
-                paddingX: `${padding}px`,
+                marginTop: 4, // Adds space between the Navbar and the grid
+                padding: 2, // Optional padding for grid container
             }}
         >
-            {products.map((product) => (
-                <Box
-                    key={product.id}
-                    sx={{
-                        flex: `1 1 ${CARD_WIDTH}px`,
-                        maxWidth: `${CARD_WIDTH}px`,
-                    }}
-                >
-                    <ItemCard
-                        title={product.title}
-                        price={product.price}
-                        image={product.image}
-                        rating={product.rating}
-                        onAddToCart={() => console.log(`Product ${product.id} added to cart`)}
-                    />
-                </Box>
-            ))}
+            <Box
+                ref={containerRef}
+                sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: `${CARD_GAP}px`,
+                    justifyContent: "center",
+                    paddingX: `${padding}px`,
+                }}
+            >
+                {products.map((product) => (
+                    <Box
+                        key={product.id}
+                        sx={{
+                            flex: `1 1 ${CARD_WIDTH}px`,
+                            maxWidth: `${CARD_WIDTH}px`,
+                        }}
+                    >
+                        <ItemCard
+                            title={product.title}
+                            price={product.price}
+                            image={product.image}
+                            rating={product.rating}
+                            onAddToCart={() => console.log(`Product ${product.id} added to cart`)}
+                        />
+                    </Box>
+                ))}
+            </Box>
         </Box>
     );
 }
