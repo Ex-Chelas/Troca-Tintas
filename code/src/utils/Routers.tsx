@@ -51,5 +51,6 @@ export default function AppRouter() {
                 <Route path="/shopping-cart" element={<ShoppingCart/>}/>
             </Routes>
         </Router>
+    </Box>
     );
 }
