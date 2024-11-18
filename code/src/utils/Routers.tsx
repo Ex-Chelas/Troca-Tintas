@@ -16,8 +16,6 @@ export default function AppRouter() {
                 title="Troca Tintas"
                 links={[
                     {label: "Shopping Cart", path: "/shopping-cart"},
-                    {label: "Log In", path: "/login"},
-                    {label: "Sign In", path: "/signin"},
                 ]}
 
                 menu={<HamburgerMenu

@@ -1,0 +1,130 @@
+/* Modal Overlay */
+.auth-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Modal Container */
+  .auth-modal {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.5s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Close Button */
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close-button:hover {
+    color: #000;
+  }
+  
+  /* Modal Body */
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.2s;
+  }
+  
+  .input-group input:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Toggle Text */
+  .toggle-text {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 15px;
+  }
+  
+  .toggle-link {
+    color: #007BFF;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.2s;
+  }
+  
+  .toggle-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
