@@ -1,18 +1,69 @@
-// pages/Home.tsx
-import React from "react";
-import WelcomeBanner from "../../components/WelcomeBanner";
+import React, {useEffect, useRef, useState} from "react";
+import ItemCard from "../../components/ItemCard";
+import {Box} from "@mui/material";
+import {products} from "../../service/dbDump";
+import {CARD_GAP, CARD_WIDTH} from "../../service/constants";
 
 export default function Home() {
-  return (
-    <div>
-      <WelcomeBanner message="Welcome to the Home Page!" />
-      <h2>Home</h2>
-      <p>This is the home page of our amazing project. Explore the features and enjoy your stay!</p>
-      <ul>
-        <li>Feature 1: Interactive content</li>
-        <li>Feature 2: Easy navigation</li>
-        <li>Feature 3: Responsive design</li>
-      </ul>
-    </div>
-  );
+    const [padding, setPadding] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const calculatePadding = () => {
+            if (containerRef.current) {
+                const containerWidth = containerRef.current.offsetWidth;
+
+                // Calculate how many cards fit per row
+                const totalCardWidth = CARD_WIDTH + CARD_GAP; // Card width plus gap
+                const cardsPerRow = Math.floor(containerWidth / totalCardWidth);
+
+                // Calculate remaining space to determine side padding
+                const totalSpace = containerWidth - cardsPerRow * totalCardWidth + CARD_GAP;
+                setPadding(totalSpace / 2);
+            }
+        };
+
+        calculatePadding(); // Initial calculation
+        window.addEventListener("resize", calculatePadding); // Recalculate on resize
+
+        return () => window.removeEventListener("resize", calculatePadding); // Cleanup
+    }, []);
+
+    return (
+        <Box
+            sx={{
+                marginTop: 4, // Adds space between the Navbar and the grid
+                padding: 2, // Optional padding for grid container
+            }}
+        >
+            <Box
+                ref={containerRef}
+                sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: `${CARD_GAP}px`,
+                    justifyContent: "center",
+                    paddingX: `${padding}px`,
+                }}
+            >
+                {products.map((product) => (
+                    <Box
+                        key={product.id}
+                        sx={{
+                            flex: `1 1 ${CARD_WIDTH}px`,
+                            maxWidth: `${CARD_WIDTH}px`,
+                        }}
+                    >
+                        <ItemCard
+                            title={product.title}
+                            price={product.price}
+                            image={product.image}
+                            rating={product.rating}
+                            onAddToCart={() => console.log(`Product ${product.id} added to cart`)}
+                        />
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    );
 }
