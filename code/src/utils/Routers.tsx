@@ -1,4 +1,5 @@
 import React from "react";
+import { Box } from "@mui/material";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import About from "../pages/About/About";
 import Home from "../pages/Home/Home";
@@ -11,6 +12,14 @@ import DropSchema from "../pages/DropSchema/DropSchema";
 
 export default function AppRouter() {
     return (
+    <Box
+        sx={{
+            minHeight: "100vh", // Ensure full height
+            backgroundColor: "#494a4b", // Set background color to light gray
+            display: "flex",
+            flexDirection: "column",
+        }}
+        >
         <Router>
             <Navbar
                 title="Troca Tintas"
@@ -39,5 +48,6 @@ export default function AppRouter() {
                 <Route path="/shopping-cart" element={<ShoppingCart/>}/>
             </Routes>
         </Router>
+    </Box>
     );
 }
