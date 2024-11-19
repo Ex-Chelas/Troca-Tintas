@@ -9,6 +9,7 @@ import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 import Navbar from "../components/Navbar";
 import HamburgerMenu from "../components/HamburgerMenu";
 import DropSchema from "../pages/DropSchema/DropSchema";
+import MiniViewer from "../pages/MiniViewer/MiniViewer";
 
 export default function AppRouter() {
     return (
@@ -44,8 +45,9 @@ export default function AppRouter() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/login" element={<LogIn/>}/>
-                <Route path="dropSchema" element={<DropSchema/>}/>
+                <Route path="/dropSchema" element={<DropSchema/>}/>
                 <Route path="/shopping-cart" element={<ShoppingCart/>}/>
+                <Route path="/3dViewer" element={<MiniViewer/>}/>
             </Routes>
         </Router>
     </Box>
