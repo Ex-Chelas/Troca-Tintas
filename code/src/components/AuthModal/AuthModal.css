@@ -1,0 +1,21 @@
+/* AuthModal.css */
+.openmodal {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#auth-modal {
+  background-color: #161414;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  padding: 30px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.5s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Rest of the provided CSS styles */
