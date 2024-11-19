@@ -18,11 +18,12 @@ const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
   return (
     <Modal
+      id='auth-modal'
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel={isSignup ? 'Sign Up' : 'Log In'}
-      className="auth-modal"
-      overlayClassName="auth-modal-overlay"
+      className="ReactModal__Overlay ReactModal__Overlay--after-open"
+      overlayClassName="ReactModal__Overlay ReactModal__Overlay--after-open"
     >
       <div className="modal-header">
         <h2>{isSignup ? 'Sign Up' : 'Log In'}</h2>

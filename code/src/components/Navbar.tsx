@@ -17,6 +17,9 @@ interface NavbarProps {
 const Navbar = ({ title, links, menu }: NavbarProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [userName, setUserName] = useState<string | null>(null);
 
     const openModal = (signupMode: boolean) => {
         setIsSignup(signupMode);
@@ -25,6 +28,20 @@ const Navbar = ({ title, links, menu }: NavbarProps) => {
 
     const closeModal = () => {
         setIsModalOpen(false);
+        setEmail('');
+        setPassword('');
+    };
+
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault();
+        const localPart = email.split('@')[0];
+        setUserName(localPart);
+        closeModal();
+        alert(`Welcome, ${localPart}!`);
+    };
+
+    const handleSignOut = () => {
+        setUserName(null);
     };
 
     return (
@@ -58,8 +75,52 @@ const Navbar = ({ title, links, menu }: NavbarProps) => {
                                 {link.label}
                             </Link>
                         ))}
-                        <Button color="inherit" onClick={() => openModal(false)}>Login</Button>
-                        <Button color="inherit" onClick={() => openModal(true)}>Sign Up</Button>
+                        {userName ? (
+                            <>
+                                <Typography
+                                    variant="subtitle1"
+                                    sx={{ color: "white", fontWeight: "bold", alignSelf: "center" }}
+                                >
+                                    Welcome, {userName}
+                                </Typography>
+                                <Button
+                                    style={{
+                                        color: "white",
+                                        textDecoration: "none",
+                                        fontWeight: "bold",
+                                    }}
+                                    color="inherit"
+                                    onClick={handleSignOut}
+                                >
+                                    Sign Out
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Button
+                                    style={{
+                                        color: "white",
+                                        textDecoration: "none",
+                                        fontWeight: "bold",
+                                    }}
+                                    color="inherit"
+                                    onClick={() => openModal(false)}
+                                >
+                                    Login
+                                </Button>
+                                <Button
+                                    style={{
+                                        color: "white",
+                                        textDecoration: "none",
+                                        fontWeight: "bold",
+                                    }}
+                                    color="inherit"
+                                    onClick={() => openModal(true)}
+                                >
+                                    Sign Up
+                                </Button>
+                            </>
+                        )}
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -71,21 +132,40 @@ const Navbar = ({ title, links, menu }: NavbarProps) => {
                 style={{
                     content: {
                         maxWidth: "400px",
-                        margin: "auto",
-                        padding: "20px",
+                        maxHeight: "400px",
+                        marginRight: "auto",
+                        marginLeft: "auto",
+                        marginTop: "150px",
                         borderRadius: "10px",
+                        backgroundColor: "#f0f0f0",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                        border: "2px solid #ff6600",
                     },
                 }}
             >
                 <h2>{isSignup ? "Sign Up" : "Login"}</h2>
-                <form>
+                <form onSubmit={handleLogin}>
                     <div>
                         <label>Email:</label>
-                        <input type="email" required />
+                        <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
                     <div>
                         <label>Password:</label>
-                        <input type="password" required />
+                        <input
+                            type="password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
                     {isSignup && (
                         <div>
