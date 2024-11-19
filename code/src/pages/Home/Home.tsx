@@ -1,69 +1,70 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import ItemCard from "../../components/ItemCard";
-import {Box} from "@mui/material";
-import {products} from "../../service/dbDump";
-import {CARD_GAP, CARD_WIDTH} from "../../service/constants";
+import { Box } from "@mui/material";
+import { products } from "../../service/dbDump";
+import { CARD_GAP, CARD_WIDTH } from "../../service/constants";
+import { CartContext } from "../../contexts/cardContext";
 
 export default function Home() {
-    const [padding, setPadding] = useState(0);
-    const containerRef = useRef<HTMLDivElement>(null);
+  const [padding, setPadding] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { addToCart, cartItems } = useContext(CartContext);
 
-    useEffect(() => {
-        const calculatePadding = () => {
-            if (containerRef.current) {
-                const containerWidth = containerRef.current.offsetWidth;
+  useEffect(() => {
+    console.log('Current cart items:', cartItems);
+  }, [cartItems]);
 
-                // Calculate how many cards fit per row
-                const totalCardWidth = CARD_WIDTH + CARD_GAP; // Card width plus gap
-                const cardsPerRow = Math.floor(containerWidth / totalCardWidth);
+  useEffect(() => {
+    const calculatePadding = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const totalCardWidth = CARD_WIDTH + CARD_GAP;
+        const cardsPerRow = Math.floor(containerWidth / totalCardWidth);
+        const totalSpace = containerWidth - cardsPerRow * totalCardWidth + CARD_GAP;
+        setPadding(totalSpace / 2);
+      }
+    };
 
-                // Calculate remaining space to determine side padding
-                const totalSpace = containerWidth - cardsPerRow * totalCardWidth + CARD_GAP;
-                setPadding(totalSpace / 2);
-            }
-        };
+    calculatePadding();
+    window.addEventListener("resize", calculatePadding);
 
-        calculatePadding(); // Initial calculation
-        window.addEventListener("resize", calculatePadding); // Recalculate on resize
+    return () => window.removeEventListener("resize", calculatePadding);
+  }, []);
 
-        return () => window.removeEventListener("resize", calculatePadding); // Cleanup
-    }, []);
-
-    return (
-        <Box
+  return (
+    <Box sx={{ marginTop: 4, padding: 2 }}>
+      <Box
+        ref={containerRef}
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: `${CARD_GAP}px`,
+          justifyContent: "center",
+          paddingX: `${padding}px`,
+        }}
+      >
+        {products.map((product) => (
+          <Box
+            key={product.id}
             sx={{
-                marginTop: 4, // Adds space between the Navbar and the grid
-                padding: 2, // Optional padding for grid container
+              flex: `1 1 ${CARD_WIDTH}px`,
+              maxWidth: `${CARD_WIDTH}px`,
             }}
-        >
-            <Box
-                ref={containerRef}
-                sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: `${CARD_GAP}px`,
-                    justifyContent: "center",
-                    paddingX: `${padding}px`,
-                }}
-            >
-                {products.map((product) => (
-                    <Box
-                        key={product.id}
-                        sx={{
-                            flex: `1 1 ${CARD_WIDTH}px`,
-                            maxWidth: `${CARD_WIDTH}px`,
-                        }}
-                    >
-                        <ItemCard
-                            title={product.title}
-                            price={product.price}
-                            image={product.image}
-                            rating={product.rating}
-                            onAddToCart={() => console.log(`Product ${product.id} added to cart`)}
-                        />
-                    </Box>
-                ))}
-            </Box>
-        </Box>
-    );
+          >
+            <ItemCard
+              title={product.title}
+              price={product.price}
+              image={product.image}
+              rating={product.rating}
+              brand={product.brand}
+              onAddToCart={() => {
+                addToCart(product);
+                console.log(`Product ${product.id}, added to cart`);
+              }}
+            />
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
 }

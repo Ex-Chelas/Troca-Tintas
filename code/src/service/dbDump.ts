@@ -5,6 +5,7 @@ interface Product {
     price: number;
     image: string;
     rating: number;
+    brand: string;
 }
 
 const inks: Product[] = [
@@ -14,6 +15,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.5,
+        brand: "Citadel",
     },
     {
         id: 2,
@@ -21,6 +23,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.7,
+        brand: "Citadel",
     },
     {
         id: 3,
@@ -28,6 +31,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.2,
+        brand: "Citadel",
     },
     {
         id: 4,
@@ -35,6 +39,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.6,
+        brand: "Citadel",
     },
     {
         id: 5,
@@ -42,6 +47,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.0,
+        brand: "Citadel",
     },
     {
         id: 6,
@@ -49,6 +55,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.3,
+        brand: "Vallejo",
     },
     {
         id: 7,
@@ -56,6 +63,7 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.8,
+        brand: "Vallejo",
     },
     {
         id: 8,
@@ -63,65 +71,74 @@ const inks: Product[] = [
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.4,
+        brand: "Vallejo",
     },
 ];
 
 const minis: Product[] = [
     {
-        id: 1,
+        id: 11,
         title: "Black Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.5,
+        brand: "Games Workshop",
     },
     {
-        id: 2,
+        id: 12,
         title: "Blue Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.7,
+        brand: "Games Workshop",
     },
     {
-        id: 3,
+        id: 13,
         title: "Red Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.2,
+        brand: "Games Workshop",
     },
     {
-        id: 4,
+        id: 14,
         title: "Green Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.6,
+        brand: "Games Workshop",
     },
     {
-        id: 5,
+        id: 15,
         title: "Purple Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.0,
+        brand: "Games Workshop",
     },
     {
-        id: 6,
+        id: 16,
         title: "Orange Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.3,
+        brand: "Games Workshop",
     },
     {
-        id: 7,
+        id: 17,
         title: "Yellow Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.8,
+        brand: "Games Workshop",
     },
     {
-        id: 8,
+        id: 18,
         title: "Pink Mini",
         price: 9.99,
         image: "https://via.placeholder.com/150",
         rating: 4.4,
+        brand: "Malifaux",
     },
 ];
 
