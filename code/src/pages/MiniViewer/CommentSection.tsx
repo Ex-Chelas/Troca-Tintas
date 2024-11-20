@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CommentCard from "../../components/CommentCard";
 import AddComment from "../../components/AddComment";
 
-export default function CommentsSection() {
+export default function CommentSection() {
     const [comments, setComments] = useState([
         {
             username: "John Doe",
@@ -21,15 +21,18 @@ export default function CommentsSection() {
         setComments([
             ...comments,
             {
-                username: "New User", // You can update this to dynamically use logged-in user data
-                profilePic: "https://via.placeholder.com/40", // Placeholder for new user's profile pic
+                username: "New User",
+                profilePic: "https://via.placeholder.com/40",
                 comment: newComment,
             },
         ]);
     };
 
     return (
-        <Box sx={{ padding: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, padding: 2 }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+                Comments
+            </Typography>
             {comments.map((comment, index) => (
                 <CommentCard
                     key={index}
