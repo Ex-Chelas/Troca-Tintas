@@ -12,7 +12,7 @@ import DropSchema from "../pages/DropSchema/DropSchema";
 import MiniViewer from "../pages/MiniViewer/MiniViewer";
 
 export default function AppRouter() {
-    return (
+  return (
     <Box
       sx={{
         minHeight: "100vh",
