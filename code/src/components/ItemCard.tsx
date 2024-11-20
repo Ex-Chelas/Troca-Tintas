@@ -7,10 +7,11 @@ interface ItemCardProps {
     price: number;
     image: string;
     rating: number;
+    brand: string;
     onAddToCart: () => void;
 }
 
-export default function ItemCard({title, price, image, rating, onAddToCart}: ItemCardProps) {
+export default function ItemCard({title, price, image, rating,brand, onAddToCart}: ItemCardProps) {
     return (
         <Card
             sx={{

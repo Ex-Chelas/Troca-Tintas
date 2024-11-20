@@ -14,31 +14,29 @@ import MiniViewer from "../pages/MiniViewer/MiniViewer";
 export default function AppRouter() {
     return (
     <Box
-        sx={{
-            minHeight: "100vh", // Ensure full height
-            backgroundColor: "#494a4b", // Set background color to light gray
-            display: "flex",
-            flexDirection: "column",
-        }}
-        >
-        <Router>
-            <Navbar
-                title="Troca Tintas"
-                links={[
-                    {label: "Shopping Cart", path: "/shopping-cart"},
-                ]}
-
-                menu={<HamburgerMenu
-                    links={[
-                        {label: "Home", path: "/"},
-                        {label: "Color Picker", path: "/colourPicker"},
-                        {label: "3D Viewer", path: "/3dViewer"},
-                        {label: "Colour Comparator", path: "/colorComparator"},
-                        {label: "Drop Schema", path: "/dropSchema"},
-                    ]}
-                />
-                }
+      sx={{
+        minHeight: "100vh",
+        backgroundColor: "#494a4b",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Router>
+        <Navbar
+          title="Troca Tintas"
+          links={[]}
+          menu={
+            <HamburgerMenu
+              links={[
+                { label: "Home", path: "/" },
+                { label: "Color Picker", path: "/colourPicker" },
+                { label: "3D Viewer", path: "/3dViewer" },
+                { label: "Colour Comparator", path: "/colorComparator" },
+                { label: "Drop Schema", path: "/dropSchema" },
+              ]}
             />
+          }
+        />
 
             <Routes>
                 <Route path="/" element={<Home/>}/>
