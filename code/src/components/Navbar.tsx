@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ title, links, menu }) => {
         >
           {menu && <Box sx={{ mr: 2 }}>{menu}</Box>}
 
-          <Typography variant="h6" component="div" sx={{ textAlign: "center", flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ textAlign: "left", flexGrow: 1 }}>
             {title}
           </Typography>
 

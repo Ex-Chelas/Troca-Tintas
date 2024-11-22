@@ -5,7 +5,7 @@ import { CartProvider } from './provider/CartProvider';
 function App() {
   return (
     <CartProvider>
-      <div>Test App</div>
+      <div>Troca Tintas</div>
     </CartProvider>
   );
 }
