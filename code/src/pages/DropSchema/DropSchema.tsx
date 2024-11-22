@@ -1,80 +1,91 @@
 import React, { useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Button, Typography, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useDropzone } from "react-dropzone";
 
 export default function DropSchema() {
-    const [file, setFile] = useState<File | null>(null);
+    const [files, setFiles] = useState<File[]>([]);
 
     const onDrop = (acceptedFiles: File[]) => {
-        setFile(acceptedFiles[0]); // Replace the file with the first one in accepted files
+        // Add new files to the existing file list
+        setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
     };
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+    const handleRemoveFile = (index: number) => {
+        setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+    };
+
+    const handleUpload = () => {
+        // Logic to upload files (e.g., send them to a server)
+        console.log("Uploading files:", files);
+        alert("Files uploaded successfully!");
+        window.location.href = "/3dViewer"
+    };
+
     return (
         <Box
             sx={{
-                marginTop: 4,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
                 minHeight: "100vh",
-                backgroundColor: "#f5f5f5",
+                textAlign: "center",
                 padding: 4,
             }}
         >
-            <Box
-                {...getRootProps()}
-                sx={{
-                    border: "2px dashed #ccc",
-                    borderRadius: 4,
-                    padding: 4,
-                    width: "50%",
-                    textAlign: "center",
-                    backgroundColor: isDragActive ? "#e0e0e0" : "#fafafa",
-                    cursor: "pointer",
-                }}
-            >
-                <input {...getInputProps()} />
-                <Typography variant="h6">
-                    {isDragActive ? "Drop the file here..." : "Drag and drop a file here, or click to select a file"}
-                </Typography>
-            </Box>
-
-            {file && (
-                <Box sx={{ marginTop: 4, textAlign: "center", width: "100%" }}>
-                    <Typography variant="h6" sx={{ marginBottom: 2 }}>
-                        Uploaded File
+            {/* Dropzone */}
+            <div {...getRootProps()}>
+                <Box
+                    sx={{
+                        border: "2px dashed",
+                        borderRadius: 2,
+                        padding: 3,
+                        cursor: "pointer",
+                        width: "300px",
+                        backgroundColor: isDragActive ? "rgba(0, 0, 0, 0.1)" : "transparent",
+                        marginBottom: 3,
+                    }}
+                >
+                    <input {...getInputProps()} />
+                    <Typography variant="body1">
+                        {isDragActive ? "Drop the files here..." : "Drag and drop files here, or click to select files"}
                     </Typography>
-                    <Box
-                        sx={{
-                            border: "1px solid #ccc",
-                            borderRadius: 2,
-                            padding: 2,
-                            backgroundColor: "#fff",
-                            display: "inline-block",
-                        }}
-                    >
-                        <Typography variant="body1" noWrap>
-                            {file.name}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                            {(file.size / 1024).toFixed(2)} KB
-                        </Typography>
-                    </Box>
+                </Box>
+            </div>
+
+            {/* File List */}
+            {files.length > 0 && (
+                <Box sx={{ width: "300px", marginBottom: 3 }}>
+                    <Typography variant="h6" sx={{ marginBottom: 2 }}>
+                        Files:
+                    </Typography>
+                    <List>
+                        {files.map((file, index) => (
+                            <ListItem
+                                key={index}
+                                secondaryAction={
+                                    <IconButton edge="end" onClick={() => handleRemoveFile(index)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                }
+                            >
+                                <ListItemText
+                                    primary={file.name}
+                                    secondary={`${(file.size / 1024).toFixed(2)} KB`}
+                                />
+                            </ListItem>
+                        ))}
+                    </List>
                 </Box>
             )}
 
-            {file && (
-                <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{ marginTop: 2 }}
-                    // redirect to 3d viewer page
-                    onClick={() => { window.location.href = "/3dViewer" }}
-                >
-                    Upload File
+            {/* Upload Button */}
+            {files.length > 0 && (
+                <Button variant="contained" color="primary" onClick={handleUpload}>
+                    Upload Files
                 </Button>
             )}
         </Box>
