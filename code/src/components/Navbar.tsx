@@ -65,85 +65,86 @@ const Navbar: React.FC<NavbarProps> = ({ title, links, menu }) => {
               {title}
             </Typography>
 
-            <Box component="nav" sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              {links.map((link, index) => (
-                  <Link
-                      key={index}
-                      to={link.path}
-                      style={{
-                        color: mode === "light" ? "white" : "#ddd",
-                        textDecoration: "none",
-                        fontWeight: "bold",
+              <Box component="nav" sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                  {/* Theme Toggle Button */}
+                  <IconButton
+                      onClick={toggleTheme}
+                      color="inherit"
+                      sx={{
+                          color: mode === "light" ? "white" : "#ddd",
                       }}
                   >
-                    {link.label}
-                  </Link>
-              ))}
-              {userName ? (
-                  <>
-                    <Typography
-                        variant="subtitle1"
-                        sx={{
-                          color: mode === "light" ? "white" : "#ddd",
-                          fontWeight: "bold",
-                          alignSelf: "center",
-                        }}
-                    >
-                      Welcome, {userName}
-                    </Typography>
-                    <Button
-                        style={{
-                          color: mode === "light" ? "white" : "#ddd",
-                          textDecoration: "none",
-                          fontWeight: "bold",
-                        }}
-                        color="inherit"
-                        onClick={handleSignOut}
-                    >
-                      Sign Out
-                    </Button>
-                  </>
-              ) : (
-                  <>
-                    <Button
-                        style={{
-                          color: mode === "light" ? "white" : "#ddd",
-                          textDecoration: "none",
-                          fontWeight: "bold",
-                        }}
-                        color="inherit"
-                        onClick={() => openModal(false)}
-                    >
-                      Login
-                    </Button>
-                    <Button
-                        style={{
-                          color: mode === "light" ? "white" : "#ddd",
-                          textDecoration: "none",
-                          fontWeight: "bold",
-                        }}
-                        color="inherit"
-                        onClick={() => openModal(true)}
-                    >
-                      Sign Up
-                    </Button>
-                  </>
-              )}
+                      {mode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
+                  </IconButton>
 
-              {/* Theme Toggle Button */}
-              <IconButton
-                  onClick={toggleTheme}
-                  color="inherit"
-                  sx={{
-                    color: mode === "light" ? "white" : "#ddd",
-                  }}
-              >
-                {mode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
-              </IconButton>
+                  {links.map((link, index) => (
+                      <Link
+                          key={index}
+                          to={link.path}
+                          style={{
+                              color: mode === "light" ? "white" : "#ddd",
+                              textDecoration: "none",
+                              fontWeight: "bold",
+                          }}
+                      >
+                          {link.label}
+                      </Link>
+                  ))}
+                  {userName ? (
+                      <>
+                          <Typography
+                              variant="subtitle1"
+                              sx={{
+                                  color: mode === "light" ? "white" : "#ddd",
+                                  fontWeight: "bold",
+                                  alignSelf: "center",
+                              }}
+                          >
+                              Welcome, {userName}
+                          </Typography>
+                          <Button
+                              style={{
+                                  color: mode === "light" ? "white" : "#ddd",
+                                  textDecoration: "none",
+                                  fontWeight: "bold",
+                              }}
+                              color="inherit"
+                              onClick={handleSignOut}
+                          >
+                              Sign Out
+                          </Button>
+                      </>
+                  ) : (
+                      <>
+                          <Button
+                              style={{
+                                  color: mode === "light" ? "white" : "#ddd",
+                                  textDecoration: "none",
+                                  fontWeight: "bold",
+                              }}
+                              color="inherit"
+                              onClick={() => openModal(false)}
+                          >
+                              Login
+                          </Button>
+                          <Button
+                              style={{
+                                  color: mode === "light" ? "white" : "#ddd",
+                                  textDecoration: "none",
+                                  fontWeight: "bold",
+                              }}
+                              color="inherit"
+                              onClick={() => openModal(true)}
+                          >
+                              Sign Up
+                          </Button>
+                      </>
+                  )}
 
-              {/* Include ShoppingCart here */}
-              <ShoppingCart />
-            </Box>
+                  {/* Include ShoppingCart here */}
+                  <ShoppingCart />
+              </Box>
+
           </Toolbar>
         </AppBar>
 

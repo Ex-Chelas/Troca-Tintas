@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd011513-085e-4ae8-bf29-3537daff50dd" name="Changes" comment="Improve Shopping card" />
+    <list default="true" id="de990d0f-556f-4a47-91dd-ac80df20692f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +26,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "RodrigoNevesWork"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ex-Chelas/Troca-Tintas.git",
+    "accountId": "99d388c2-7f68-4cc5-9b5d-963465253b4f"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -42,8 +54,7 @@
     "Jest.App.test.tsx.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "togge-dark-theme",
-    "last_opened_file_path": "C:/Users/Findmore/Documents/GitHub/Troca-Tintas",
+    "last_opened_file_path": "C:/Users/Findmore/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/22.11.0/node_modules/npm/bin/npm",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,12 +62,13 @@
     "nodejs.jest.jest_package": "C:/Users/Findmore/Documents/GitHub/Troca-Tintas/code/node_modules/react-scripts",
     "nodejs_interpreter_path": "C:/Users/Findmore/AppData/Roaming/JetBrains/WebStorm2024.3/node/versions/22.11.0/node",
     "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
     "npm.start.executor": "Debug",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="App.test.tsx" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/code/node_modules/react-scripts" />
@@ -64,6 +76,16 @@
       <envs />
       <scope-kind value="TEST_FILE" />
       <test-file value="$PROJECT_DIR$/code/src/App.test.tsx" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/code/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="$APPLICATION_CONFIG_DIR$/node/versions/22.11.0/node_modules/npm/bin/npm" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -78,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
         <item itemvalue="Jest.App.test.tsx" />
       </list>
