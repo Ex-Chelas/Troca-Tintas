@@ -138,7 +138,7 @@ export const inks: Colour[] = [
 
 export const minis: Product[] = [
     {
-        id: 18,
+        id: 23,
         title: "Master of Executions",
         price: 25.00,
         image: "https://www.warhammer.com/app/resources/catalog/product/threeSixty/99070102013_CSMMasterOfExecutions360/01.jpg?fm=webp&w=920",
