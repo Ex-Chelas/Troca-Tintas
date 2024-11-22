@@ -11,6 +11,7 @@ import HamburgerMenu from "../components/HamburgerMenu";
 import DropSchema from "../pages/DropSchema/DropSchema";
 import ShoppingCartPage from "../pages/ShoppingCart/ShoppingCart";
 import ColorComparator from "../pages/ColorComparator/ColorComparator";
+import ColorPickerPage from "../pages/ColourPicker/ColourPicker";
 
 export default function AppRouter() {
     return (
@@ -48,6 +49,7 @@ export default function AppRouter() {
                     <Route path="/shopping-cart" element={<ShoppingCartPage/>}/>
                     <Route path="/3dViewer" element={<D3Viewer/>}/>
                     <Route path="/colorComparator" element={<ColorComparator/>}/>
+                    <Route path="/colourPicker" element={<ColorPickerPage/>}/>
                 </Routes>
             </Router>
         </Box>

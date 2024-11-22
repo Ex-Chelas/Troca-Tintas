@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Colour } from "../../service/dbDump";
+import { Colour } from "../service/dbDump";
 
 interface ColorCarouselProps {
     colors: Colour[]; // Array of Colour objects
