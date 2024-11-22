@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import ItemCard from "../../components/ItemCard";
 import { Box, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -20,6 +21,7 @@ export default function Home() {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const { addToCart, cartItems } = useContext<CartContextProps>(CartContext);
+    const navigate = useNavigate(); // Initialize navigation hook
 
     // Log current cart items whenever they change
     useEffect(() => {
@@ -90,6 +92,11 @@ export default function Home() {
                 }}
             >
                 {filteredItems.map((item) => {
+                  const handleItemClick = () => {
+                    if (!isColour(item) && item.title === "Master of Executions") {
+                        navigate(`/3dviewer`);
+                    }
+                };
                     if (isColour(item)) {
                         // Render Colour item
                         return (
@@ -124,17 +131,19 @@ export default function Home() {
                                     maxWidth: `${CARD_WIDTH}px`,
                                 }}
                             >
-                                <ItemCard
-                                    title={item.title}
-                                    price={item.price}
-                                    image={item.image}
-                                    rating={item.rating}
-                                    brand={item.brand}
-                                    onAddToCart={() => {
-                                        addToCart(item);
-                                        console.log(`Product ${item.id} added to cart`);
-                                    }}
-                                />
+                                <div onClick={handleItemClick}>
+                                    <ItemCard
+                                        title={item.title}
+                                        price={item.price}
+                                        image={item.image}
+                                        rating={item.rating}
+                                        brand={item.brand}
+                                        onAddToCart={() => {
+                                            addToCart(item);
+                                            console.log(`Product ${item.id} added to cart`);
+                                        }}
+                                    />
+                                </div>
                             </Box>
                         );
                     }
