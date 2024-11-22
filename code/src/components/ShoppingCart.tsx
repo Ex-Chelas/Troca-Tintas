@@ -25,7 +25,6 @@ const ShoppingCart: React.FC = () => {
 
     return (
         <div>
-            {/* Shopping Cart Button */}
             <Button
                 color="inherit"
                 onClick={openCart}
@@ -38,7 +37,7 @@ const ShoppingCart: React.FC = () => {
                 Shopping Cart ({cartItems.length})
             </Button>
 
-            {/* Cart Modal */}
+            {/* Updated Modal */}
             <Modal
                 isOpen={isCartOpen}
                 onRequestClose={closeCart}
@@ -52,13 +51,23 @@ const ShoppingCart: React.FC = () => {
                         padding: "20px",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                         border: "2px solid #ff6600",
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "80vh", // Ensures the modal has a fixed height
                     },
                 }}
             >
                 <h2>Shopping Cart</h2>
                 {cartItems.length > 0 ? (
-                    <div style={{ maxHeight: "400px", overflowY: "auto" }}>
-                        <ul style={{ listStyle: "none", padding: 0 }}>
+                    <div
+                        style={{
+                            flex: 1, // Makes the list take all remaining space
+                            overflowY: "auto", // Enables scrolling when items exceed height
+                            marginBottom: "20px", // Adds space between the list and buttons
+                            paddingRight: "10px",
+                        }}
+                    >
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                             {cartItems.map((item: CartItem) => (
                                 <li
                                     key={item.id}
@@ -95,42 +104,63 @@ const ShoppingCart: React.FC = () => {
                                 </li>
                             ))}
                         </ul>
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                fontWeight: "bold",
-                                marginTop: "20px",
-                            }}
+                    </div>
+                ) : (
+                    <p style={{ flex: 1, textAlign: "center" }}>Your cart is empty.</p>
+                )}
+                <div
+                    style={{
+                        marginTop: "auto", // Pushes the footer to the bottom
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            fontWeight: "bold",
+                        }}
+                    >
+                        <span>Total: €{calculateTotal()}</span>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={openCheckout}
+                            style={{ flex: 1, marginRight: "10px" }}
+                            disabled={cartItems.length === 0}
                         >
-                            <span>Total:</span>
-                            <span>€{calculateTotal()}</span>
-                        </div>
+                            Check Out
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            onClick={closeCart}
+                            style={{ flex: 1 }}
+                        >
+                            Close
+                        </Button>
+                    </div>
+                    {cartItems.length > 0 && (
                         <Button
                             variant="outlined"
                             color="secondary"
                             onClick={clearCart}
-                            style={{ marginTop: "10px" }}
+                            style={{
+                                width: "100%",
+                            }}
                         >
                             Clear Cart
                         </Button>
-                    </div>
-                ) : (
-                    <p>Your cart is empty.</p>
-                )}
-                <div style={{ marginTop: "20px", textAlign: "right" }}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={openCheckout}
-                        style={{ marginRight: "10px" }}
-                        disabled={cartItems.length === 0}
-                    >
-                        Check Out
-                    </Button>
-                    <Button variant="outlined" onClick={closeCart}>
-                        Close
-                    </Button>
+                    )}
                 </div>
             </Modal>
         </div>
