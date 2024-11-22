@@ -2,16 +2,25 @@ import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { HexColorPicker } from "react-colorful";
 
-export default function ColorPicker() {
-    const [color, setColor] = useState("#fcba03"); // Default color
+interface ColorPickerProps {
+    onChange: (rgb: string) => void; // Callback to send selected RGB
+}
 
-    // Helper to convert HEX to RGB
+export default function ColorPicker({ onChange }: ColorPickerProps) {
+    const [color, setColor] = useState("#000000"); // Default HEX color
+
+    // Convert HEX to RGB
     const hexToRgb = (hex: string) => {
         const bigint = parseInt(hex.slice(1), 16);
         const r = (bigint >> 16) & 255;
         const g = (bigint >> 8) & 255;
         const b = bigint & 255;
-        return `${r}, ${g}, ${b}`;
+        return `rgb(${r}, ${g}, ${b})`;
+    };
+
+    const handleChange = (newColor: string) => {
+        setColor(newColor);
+        onChange(hexToRgb(newColor)); // Notify parent component
     };
 
     return (
@@ -23,8 +32,8 @@ export default function ColorPicker() {
                 width: "350px",
                 height: "500px",
                 padding: 2,
-                border: "1px solid #ccc", // Tighter border
-                borderRadius: "8px", // Reduced corner radius
+                border: "1px solid #ccc",
+                borderRadius: "8px",
                 backgroundColor: "#2b2b2b",
                 boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
             }}
@@ -51,7 +60,7 @@ export default function ColorPicker() {
             >
                 <HexColorPicker
                     color={color}
-                    onChange={setColor}
+                    onChange={handleChange}
                     style={{
                         width: "100%",
                         height: "100%",

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Colour } from "../../service/dbDump";
 
 interface ColorCarouselProps {
-    colors: string[]; // Array of color hex codes
-    height: number; // Height of the component to match RotateSelector
+    colors: Colour[]; // Array of Colour objects
+    height: number; // Height of the component
+    width: number; // Width of the carousel
 }
 
-export default function ColorCarousel({ colors, height }: ColorCarouselProps) {
+export default function ColorCarousel({ colors, height, width }: ColorCarouselProps) {
     const [startIndex, setStartIndex] = useState(0);
 
     // Calculate indices for visible colors
@@ -33,15 +35,15 @@ export default function ColorCarousel({ colors, height }: ColorCarouselProps) {
         <Box
             sx={{
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                height: `${height}px`, // Match RotateSelector height
-                width: "150px", // Fixed width for alignment
-                backgroundColor: "#f9f9f9",
+                height: `${height}px`,
+                width: `${width}px`,
+                backgroundColor: "#2b2b2b",
                 borderRadius: "8px",
-                border: "1px solid #ccc",
-                padding: 2,
+                padding: "8px",
+                gap: 2,
             }}
         >
             {/* Previous Button */}
@@ -64,25 +66,46 @@ export default function ColorCarousel({ colors, height }: ColorCarouselProps) {
             <Box
                 sx={{
                     display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 2,
                     flex: 1,
-                    justifyContent: "center",
-                    width: "100%",
+                    justifyContent: "space-around",
                 }}
             >
-                {visibleColors.map((color, index) => (
+                {visibleColors.map((colorObj, index) => (
                     <Box
                         key={index}
                         sx={{
-                            width: "100%",
-                            height: `${height / 4}px`, // Dynamically adjust square height
-                            backgroundColor: color,
+                            width: `${(width - 120) / 3}px`,
+                            height: `${height - 50}px`, // Keeps squares proportional to height
+                            backgroundColor: colorObj.rgb,
                             borderRadius: "4px",
-                            border: "2px solid #fff",
+                            border: "2px solid #ffffff",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "8px",
                         }}
-                    />
+                    >
+                        {/* Ink Details */}
+                        <Typography
+                            variant="body1"
+                            sx={{ color: "#fff", fontSize: "14px", fontWeight: "bold" }}
+                        >
+                            {colorObj.product.title}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{ color: "#ddd", fontSize: "12px" }}
+                        >
+                            {colorObj.product.brand}
+                        </Typography>
+                        <Typography
+                            variant="caption"
+                            sx={{ color: "#bbb", fontSize: "10px" }}
+                        >
+                            {colorObj.rgb}
+                        </Typography>
+                    </Box>
                 ))}
             </Box>
 

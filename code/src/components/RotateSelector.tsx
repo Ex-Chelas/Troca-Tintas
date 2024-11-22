@@ -6,9 +6,10 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 interface RotateSelectorProps {
     brands: string[]; // Array of brand names
     onBrandSelect: (selectedBrand: string) => void; // Callback to notify when a brand is selected
+    componentHeight: number; // Height of the component
 }
 
-export default function RotateSelector({ brands, onBrandSelect }: RotateSelectorProps) {
+export default function RotateSelector({ brands, onBrandSelect, componentHeight}: RotateSelectorProps) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const handlePrevious = () => {
@@ -35,6 +36,7 @@ export default function RotateSelector({ brands, onBrandSelect }: RotateSelector
                 borderRadius: "8px",
                 padding: 2,
                 backgroundColor: "#f9f9f9",
+                height: componentHeight
             }}
         >
             {/* Title */}
