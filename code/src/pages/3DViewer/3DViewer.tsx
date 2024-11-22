@@ -47,6 +47,8 @@ export default function D3ViewerPage() {
 
   // Handle navigation for color changes
   const handleColorClick = (color: string) => {
+    if(color === "black-legion") return;
+    if(color === "sun-yellow") return;
     navigate(`/3dViewer?color=${color}`);
   };
 
