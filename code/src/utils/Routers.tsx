@@ -5,6 +5,7 @@ import About from "../pages/About/About";
 import Home from "../pages/Home/Home";
 import SignIn from "../pages/Auth/SignIn";
 import LogIn from "../pages/Auth/LogIn";
+import D3Viewer from "../pages/3DViewer/3DViewer";
 import Navbar from "../components/Navbar";
 import HamburgerMenu from "../components/HamburgerMenu";
 import DropSchema from "../pages/DropSchema/DropSchema";
@@ -44,6 +45,7 @@ export default function AppRouter() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/dropSchema" element={<DropSchema />} />
           <Route path="/shopping-cart" element={<ShoppingCartPage />} />
+          <Route path="/3dViewer" element={<D3Viewer />} />
         </Routes>
       </Router>
     </Box>

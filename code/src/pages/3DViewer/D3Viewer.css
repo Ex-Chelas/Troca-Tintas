@@ -1,0 +1,121 @@
+/* General Page Layout */
+.d3-viewer-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #2e2e2e; /* Grey background */
+    color: #ffffff;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .page-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .page-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  
+  /* Color List Section */
+  .color-list {
+    margin-top: 30px;
+    background-color: #1e1e1e; /* Dark container background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 80%;
+    text-align: left;
+  }
+  
+  .color-list h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .color-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .color-list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  /* Color Box (Image/Swatch) */
+  .color-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #cccccc;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .color-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Color Info (Text Details) */
+  .color-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .color-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+  }
+  
+  .color-brand {
+    font-size: 14px;
+    color: #cccccc;
+    margin-bottom: 2px;
+  }
+  
+  .color-price {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  /* Add to Cart Button */
+  .add-to-cart-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff; /* Blue button */
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  

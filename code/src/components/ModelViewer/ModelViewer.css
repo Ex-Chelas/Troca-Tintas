@@ -1,0 +1,22 @@
+.viewer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    height: 450px;
+  }
+  
+  .model-viewer {
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    cursor: grab;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+  }
+  
