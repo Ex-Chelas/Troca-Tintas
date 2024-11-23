@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
+import {AppBar, Toolbar, Typography, Box, Button, IconButton} from "@mui/material";
 import Modal from 'react-modal';
 import ShoppingCart from './ShoppingCart';
+import MenuIcon from "@mui/icons-material/Menu";
 
 Modal.setAppElement('#root'); // For accessibility
 
@@ -53,11 +54,27 @@ const Navbar: React.FC<NavbarProps> = ({ title, links, menu }) => {
             backgroundColor: "#FF5500",
           }}
         >
-          {menu && <Box sx={{ mr: 2 }}>{menu}</Box>}
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                {/* Hamburger Button */}
+                {menu}
 
-          <Typography variant="h6" component="div" sx={{ textAlign: "left", flexGrow: 1 }}>
-            {title}
-          </Typography>
+                {/* Title Button */}
+                <Button
+                    onClick={() => (window.location.href = "/")}
+                    sx={{
+                        textTransform: "none",
+                        color: "white",
+                        fontSize: "1rem",
+                        padding: "4px 8px",
+                        minWidth: "auto",
+                        ":hover": {
+                            backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        },
+                    }}
+                >
+                    {title}
+                </Button>
+            </Box>
 
           <Box component="nav" sx={{ display: "flex", gap: "10px", alignItems: 'center' }}>
             {links.map((link, index) => (
