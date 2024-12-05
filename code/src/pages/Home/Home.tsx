@@ -54,12 +54,14 @@ export default function Home() {
     );
 
     return (
-        <Box sx={{ marginTop: 4, padding: 2 }}>
+        <Box sx={{ marginTop: 4, padding: 2,
+            color:"white" }}>
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    marginBottom: 4,
+                    marginBottom: 4
+                    
                 }}
             >
                 {/* Search bar */}
@@ -71,6 +73,22 @@ export default function Home() {
                     sx={{
                         width: `calc(${CARD_WIDTH}px * ${Math.floor((containerRef.current?.offsetWidth ?? 0) / (CARD_WIDTH + CARD_GAP)) || 1})`,
                         maxWidth: "100%",
+                        backgroundColor: "white", // Ensure the background stays white
+                        "& .MuiInputBase-input": {
+                            color: "black", // Ensure text inside the input is black
+                        },
+                        "& .MuiOutlinedInput-root": {
+                            backgroundColor: "white", // Ensure the input box background stays white
+                            "& fieldset": {
+                                borderColor: "gray", // Default border color
+                            },
+                            "&:hover fieldset": {
+                                borderColor: "blue", // Border color on hover
+                            },
+                            "&.Mui-focused fieldset": {
+                                borderColor: "blue", // Border color when focused
+                            },
+                        },
                     }}
                     InputProps={{
                         startAdornment: (
@@ -80,6 +98,7 @@ export default function Home() {
                         ),
                     }}
                 />
+
             </Box>
             <Box
                 ref={containerRef}

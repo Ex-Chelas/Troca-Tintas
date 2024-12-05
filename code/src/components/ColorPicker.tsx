@@ -73,7 +73,7 @@ export default function ColorPicker({ onChange }: ColorPickerProps) {
                 sx={{
                     width: "100%",
                     height: "50px",
-                    backgroundColor: color,
+                    backgroundColor: "color",
                     borderRadius: "4px",
                     marginBottom: 3,
                     border: "1px solid #fff",

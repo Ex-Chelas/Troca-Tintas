@@ -34,6 +34,23 @@ export default function AddComment({ onAddComment }: AddCommentProps) {
                 multiline
                 rows={3}
                 fullWidth
+                sx={{
+                    backgroundColor: "white", // Ensure the background is always white
+                    "& .MuiInputBase-root": {
+                        color: "black", // Ensure text inside is black
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                            borderColor: "gray", // Default border color
+                        },
+                        "&:hover fieldset": {
+                            borderColor: "blue", // Border color on hover
+                        },
+                        "&.Mui-focused fieldset": {
+                            borderColor: "blue", // Border color when focused
+                        },
+                    },
+                }}
             />
             <Button
                 variant="contained"
