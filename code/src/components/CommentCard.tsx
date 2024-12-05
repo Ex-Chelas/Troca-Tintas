@@ -17,6 +17,7 @@ export default function CommentCard({username, profilePic, comment}: CommentCard
                 marginTop: 2,
                 backgroundColor: "#f9f9f9",
                 display: "flex",
+                color: "black",
                 flexDirection: "column",
                 maxWidth: "600px", // Adjust as needed
             }}
