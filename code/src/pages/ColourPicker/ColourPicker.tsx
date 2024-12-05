@@ -81,7 +81,7 @@ export default function ColorPickerPage() {
         >
             {/* Title */}
             <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff" }}>
-                Color Comparator
+                Color Picker
             </Typography>
 
             {/* Layout for RotateSelector and ColorCarousel */}
@@ -135,7 +135,7 @@ export default function ColorPickerPage() {
                 </a>
 
                 {/* Rotate Selector */}
-                <Box sx={{ flex: 1 }}>
+                <Box sx={{ flex: 1, color:"white" }}>
                     <CommentSection />
                 </Box>
             </Box>

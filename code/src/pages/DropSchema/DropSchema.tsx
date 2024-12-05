@@ -40,13 +40,15 @@ export default function DropSchema() {
             <div {...getRootProps()}>
                 <Box
                     sx={{
-                        border: "2px dashed",
+                        border: "2px dashed gray",
                         borderRadius: 2,
                         padding: 3,
                         cursor: "pointer",
                         width: "300px",
-                        backgroundColor: isDragActive ? "rgba(0, 0, 0, 0.1)" : "transparent",
+                        backgroundColor: isDragActive ? "rgba(255, 255, 255, 0.8)" : "white", // Always white background
+                        color: "black", // Ensure text inside is black
                         marginBottom: 3,
+                        transition: "background-color 0.3s", // Smooth transition for active state
                     }}
                 >
                     <input {...getInputProps()} />
@@ -55,6 +57,7 @@ export default function DropSchema() {
                     </Typography>
                 </Box>
             </div>
+
 
             {/* File List */}
             {files.length > 0 && (
